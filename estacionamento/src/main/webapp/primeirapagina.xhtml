@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	 xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+	 <h:head>
+	<title>EstacionamentoIBPV</title>
+	
+	<style>
+        .mensagem {
+            font-size: 24px; /* Tamanho da fonte */
+            font-family: Arial, sans-serif; /* Tipo de fonte */
+            font-weight: bold; /* Peso da fonte (por exemplo, negrito) */
+            color: white; /* Cor do texto */
+        }
+    </style>
+</h:head> 
+<h:body>
+	
+	<ui:include src="/menu.xhtml"/>
+
+	<h:form id="formPessao" style="text-align: center;" >
+	
+		
+
+		<h1 style="color: red">FORMULÁRIO DO ESTACIONAMENTO IBPV</h1>
+		
+		<h:messages infoStyle="background:green" styleClass="mensagem"/>
+
+		<h:graphicImage height="100" width="100" library="img" name="carrosEstacionamento.jpeg"/>
+
+		<h:panelGrid columns="2" rendered="true" style="margin: 0 auto;">
+		
+			<f:facet name="header">
+				<h:outputText value="CADASTRO DE USUÁRIOS" />
+			</f:facet>
+			<h:outputLabel value="ID"   />
+			<h:inputText value="#{pessoaBean.pessoa.id}"   readonly="true" />
+
+
+			<h:outputLabel value="Placa do Carro:" />
+			<h:inputText value="#{pessoaBean.pessoa.placaCarro}" />
+			
+			<h:outputLabel value="Nome" />
+			<h:inputText value="#{pessoaBean.pessoa.nome}" />
+		
+			<h:outputLabel value="SobreNome" />
+			<h:inputText value="#{pessoaBean.pessoa.sobreNome}" />
+					
+			<h:outputLabel value="Login: " />
+			<h:inputText value="#{pessoaBean.pessoa.login}"/>
+			
+			<h:outputLabel value="Senha: " />
+			<h:inputSecret value="#{pessoaBean.pessoa.senha}"/>
+			
+				
+			</h:panelGrid>
+			
+			<h:panelGroup>
+				<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="/resources/img/novo.jpg" title="Novo" />
+				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/salvar.jpg" title="salvar"  />
+				<h:commandButton value="Remover" action="#{pessoaBean.remover}" image="/resources/img/delete.jpg"  title="Excluir" />
+				<h:commandButton value="Limpar" image="/resources/img/limpar.jpg" type="reset" />
+			</h:panelGroup>
+
+		
+
+
+
+		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="3"
+			cellpadding="4" style="margin: 0 auto;">
+			<f:facet name="header">	Lista de pessoas cadastradas</f:facet>
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{pessoa.id}" />
+			</h:column>
+		
+			<h:column>
+				<f:facet name="header">Placa</f:facet>
+				<h:outputText value="#{pessoa.placaCarro}" required="true" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{pessoa.nome}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">SobreNome</f:facet>
+				<h:outputText value="#{pessoa.sobreNome}" />
+			</h:column>
+		
+			<h:column >
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink >
+					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
+						value="#{pessoa}" />
+						<h:graphicImage value="/resources/img/editar2.jpg"/>
+				</h:commandLink>
+			</h:column>
+		
+			<h:column >
+				<f:facet name="header">Excluir</f:facet>
+				<h:commandLink  action="#{pessoaBean.remover}">
+					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
+						value="#{pessoa}" />
+						<h:graphicImage value="/resources/img/excluir2.jpg"/>
+				</h:commandLink>
+			</h:column>
+		</h:dataTable>
+
+
+
+	</h:form>
+
+</h:body> </html>
