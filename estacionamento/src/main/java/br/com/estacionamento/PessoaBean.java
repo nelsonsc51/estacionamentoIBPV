@@ -7,10 +7,13 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import br.com.dao.DaoGeneric;
 import br.com.entidades.Pessoa;
+import br.com.reposiytory.IDAOPessoa;
+import br.com.reposiytory.IDaoPessoaImpl;
 
 @ViewScoped
 @ManagedBean(name = "pessoaBean")
@@ -19,7 +22,10 @@ public class PessoaBean {
 	private Pessoa pessoa = new Pessoa();
 	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 	// pra carregar uma lista de pessoas é preciso ter um list de pessoas
-	List<Pessoa> pessoas = new ArrayList<Pessoa>();	
+	private List<Pessoa> pessoas = new ArrayList<Pessoa>();	
+	private  IDAOPessoa iDaoPessoa = new IDaoPessoaImpl();
+		
+		
 	
 	// agora salva e retorna a entidade na tela JSF
 		public String salvar() {
@@ -100,6 +106,56 @@ public class PessoaBean {
 		this.pessoas = pessoas;
 	}
 	
+
+	public String logar() {
+		
+		//testar login do usuário
+		//System.out.println(pessoa.getLogin()+" - "+pessoa.getSenha());
+		
+		 
+		 
+		Pessoa pessoaUser = iDaoPessoa.consultarUsuario(pessoa.getLogin(), pessoa.getSenha());
+		
+			if (pessoaUser != null) {
+				
+				FacesContext context = FacesContext.getCurrentInstance();
+				ExternalContext externalContext = context.getExternalContext();
+				externalContext.getSessionMap().put("usuarioLogado", pessoaUser.getLogin());
+				
+				return "cadastro.jsf";
+			//}else {
+				 
+		      //   return "index.jsf";
+			}
+
+		//if (pessoaUser != null) {// achou o usuário
+
+			// adicionar usuário na sessão "usuarioLogado", que está no filter de
+			// autenticação
+			// para ser recuperada e setada nas linhas abaixo
+
+			//para obter qualqur informação do ambiente de execução
+			//usa-se o objeto FacesContext
+			//FacesContext context = FacesContext.getCurrentInstance();
+			//ExternalContext externalContext = context.getExternalContext();
+			// alterado para pegar o objeto completo
+			//aqui é pego a chave e o valor
+			//externalContext.getSessionMap().put("usuarioLogado", pessoaUser);
+
+			// no momento do redirecionamento, irá consultar o filter de autenticação e é
+			// necessário ter o usuário setado,
+			// para deixar redirecionar para a página que queremos
+
+		
+			//return "primeirapagina.jsf";
+			
+			//vai cair no Fiter de Autenticação e vai recuperar o usuário caso seja válido
+			//vai deixar acessar
+		
+		//}
+
+		return "index.jsf";
+	}
 
 
 }

@@ -26,7 +26,8 @@ public class FilterAutenticacao implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
 		//dentro da sessão, coloca o atributo usuarioLogado, a variável Pessoa recebe esse atributo
-		Pessoa usuarioLogado = (Pessoa) session.getAttribute("usuarioLogado");
+		String usuarioLogado = (String) session.getAttribute("usuarioLogado");
+		
 		
 		//é o endereço do nosso sistema na url
 		String url = req.getServletPath();
