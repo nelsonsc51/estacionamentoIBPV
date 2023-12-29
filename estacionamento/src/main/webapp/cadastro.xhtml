@@ -57,6 +57,14 @@
 			<h:outputLabel value="Senha: " />
 			<h:inputSecret value="#{pessoaBean.pessoa.senha}"/>
 			
+				<h:outputLabel value="Perfil: " />
+					<h:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}"  >
+						<f:selectItem itemLabel="[-Selecione-]" noSelectionOption="true"/>
+						<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador"/>
+						<f:selectItem itemValue="USUARIO" itemLabel="Usuário"/>
+						
+				</h:selectOneMenu>
+			<h:outputLabel />
 				
 			</h:panelGrid>
 			
