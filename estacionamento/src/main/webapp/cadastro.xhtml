@@ -38,8 +38,8 @@
 				<h:outputText value="CADASTRO DE USUÁRIOS" style="font-size:30px" />
 		
 			</f:facet>
-			<h:outputLabel value="ID"   />
-			<h:inputText value="#{pessoaBean.pessoa.id}"   readonly="true" />
+			<h:outputLabel value="ID" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"  />
+			<h:inputText value="#{pessoaBean.pessoa.id}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"  readonly="true" />
 
 
 			<h:outputLabel value="Placa do Carro:" />
@@ -51,14 +51,14 @@
 			<h:outputLabel value="SobreNome" />
 			<h:inputText value="#{pessoaBean.pessoa.sobreNome}" />
 					
-			<h:outputLabel value="Login: " />
-			<h:inputText value="#{pessoaBean.pessoa.login}"/>
+			<h:outputLabel value="Login: " rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
+			<h:inputText value="#{pessoaBean.pessoa.login}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"/>
 			
-			<h:outputLabel value="Senha: " />
-			<h:inputSecret value="#{pessoaBean.pessoa.senha}"/>
+			<h:outputLabel value="Senha: " rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"/>
+			<h:inputSecret value="#{pessoaBean.pessoa.senha}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"/>
 			
-				<h:outputLabel value="Perfil: " />
-					<h:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}"  >
+				<h:outputLabel value="Perfil: " rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
+					<h:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" >
 						<f:selectItem itemLabel="[-Selecione-]" noSelectionOption="true"/>
 						<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador"/>
 						<f:selectItem itemValue="USUARIO" itemLabel="Usuário"/>
@@ -71,8 +71,8 @@
 			<h:panelGroup>
 				<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="/resources/img/novo.jpg" title="Novo" />
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/salvar.jpg" title="salvar"  />
-				<h:commandButton value="Remover" action="#{pessoaBean.remover}" image="/resources/img/delete.jpg"  title="Excluir" />
-				<h:commandButton value="Limpar" image="/resources/img/limpar.jpg" type="reset" />
+				<h:commandButton value="Remover" action="#{pessoaBean.remover}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Excluir" />
+				<h:commandButton value="Limpar" image="/resources/img/limpar.jpg" type="reset" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
 			</h:panelGroup>
 
 		
@@ -82,7 +82,7 @@
 		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="3"
 			cellpadding="4" style="margin: 0 auto;">
 			<f:facet name="header">	Lista de pessoas cadastradas</f:facet>
-			<h:column>
+			<h:column rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}">
 				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{pessoa.id}" />
 			</h:column>
@@ -102,7 +102,7 @@
 				<h:outputText value="#{pessoa.sobreNome}" />
 			</h:column>
 		
-			<h:column >
+			<h:column rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" >
 				<f:facet name="header">Editar</f:facet>
 				<h:commandLink >
 					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
@@ -111,7 +111,7 @@
 				</h:commandLink>
 			</h:column>
 		
-			<h:column >
+			<h:column  rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}">
 				<f:facet name="header">Excluir</f:facet>
 				<h:commandLink  action="#{pessoaBean.remover}">
 					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
