@@ -122,6 +122,8 @@ public class PessoaBean {
 				ExternalContext externalContext = context.getExternalContext();
 				externalContext.getSessionMap().put("usuarioLogado", pessoaUser);
 				
+				mostrarmsg("Necessário campo do usuário");
+				
 				return "cadastro.jsf";
 			//}else {
 				 

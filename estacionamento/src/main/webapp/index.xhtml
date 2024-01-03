@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:h="http://java.sun.com/jsf/html">
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+	 xmlns:ui="http://java.sun.com/jsf/facelets"
+ >
  
  <h:head>
 	<title>EstacionamentoIBPV</title>
+	
+	<style>
+        .mensagem {
+            font-size: 24px; /* Tamanho da fonte */
+            font-family: Arial, sans-serif; /* Tipo de fonte */
+            font-weight: bold; /* Peso da fonte (por exemplo, negrito) */
+            color: blue; /* Cor do texto */
+            
+        }
+    </style>
 </h:head>
 <h:body>
 	
@@ -12,16 +25,18 @@
 	
 	<h:form id="formLogin" style="margin-top:22%; margin-left:40%;">
 	
-<h1 style="margin-left:-15%; color:red">LOGIN ESTACIONAMENTO IBPV</h1>
+	<h1 style="margin-left:-15%; color:red">LOGIN ESTACIONAMENTO IBPV</h1>
+	
+	<h:messages infoStyle="background:green" styleClass="mensagem"/>
 	
 		<h:panelGrid columns="2">
 		<h:outputLabel value="Login"/>
 		<h:outputLabel></h:outputLabel>
-		<h:inputText value="#{pessoaBean.pessoa.login}" autocomplete="off" />
+		<h:inputText value="#{pessoaBean.pessoa.login}" required="true" requiredMessage="informe o login" autocomplete="off" /> 
 		<h:outputLabel></h:outputLabel>
 		<h:outputLabel value="Senha"/>
 		<h:outputLabel></h:outputLabel>
-		<h:inputSecret value="#{pessoaBean.pessoa.senha}"/>
+		<h:inputSecret value="#{pessoaBean.pessoa.senha}" required="true" requiredMessage="informe a senha"/>
 		<h:outputLabel></h:outputLabel>
 		<h:commandButton value="Acessar" action="#{pessoaBean.logar}"/>
 	</h:panelGrid>
