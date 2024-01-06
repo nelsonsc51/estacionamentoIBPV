@@ -43,6 +43,7 @@ public class PessoaBean {
 				pessoa = daoGeneric.merge(pessoa);
 				// quando existem alterações no BD, involve-se o carregar a lista de pessoas
 				carregarPessoas();
+				
 				mostrarmsg("CADASTRADO COM SUCESSO");
 			}
 			
@@ -52,8 +53,11 @@ public class PessoaBean {
 		}
 		
 	private void mostrarmsg(String msg) {
+		
 		FacesContext context = FacesContext.getCurrentInstance();
+		
 		FacesMessage message = new FacesMessage(msg);
+		
 		context.addMessage(null, message);
 			
 		}
@@ -78,6 +82,7 @@ public class PessoaBean {
 			pessoa = new Pessoa();
 			// quando existem alterações no BD, invo-se o carregar a lista de pessoas
 			carregarPessoas();
+			
 			mostrarmsg("REMOVIDO COM SUCESSO");
 			return "";
 		}
@@ -121,6 +126,7 @@ public class PessoaBean {
 				FacesContext context = FacesContext.getCurrentInstance();
 				ExternalContext externalContext = context.getExternalContext();
 				externalContext.getSessionMap().put("usuarioLogado", pessoaUser);
+				
 				
 				mostrarmsg("Necessário campo do usuário");
 				
