@@ -44,13 +44,25 @@
 
 
 			<h:outputLabel value="Placa do Carro:" />
-			<b:inputText value="#{pessoaBean.pessoa.placaCarro}"  />
+			<b:inputText value="#{pessoaBean.pessoa.placaCarro}" 
+				required="true" required-message="Informe a placa do corro"
+				validatorMessage="placa precisa ter no mínimo 7 dígitos">
+				<f:validateLength minimum="7"/>
+			</b:inputText>
 			
 			<h:outputLabel value="Nome" />
-			<b:inputText value="#{pessoaBean.pessoa.nome}"  />
+			<b:inputText value="#{pessoaBean.pessoa.nome}"  
+				required="true" required-message="Informe o nome"
+				validatorMessage="nome precisa ter no mínimo 4 letras ">
+				<f:validateLength minimum="4"/>
+			</b:inputText>
 		
 			<h:outputLabel value="SobreNome" />
-			<b:inputText value="#{pessoaBean.pessoa.sobreNome}"  />
+			<b:inputText value="#{pessoaBean.pessoa.sobreNome}"  
+				required="true" required-message="Informe o sobrenome" 
+				validatorMessage="nome precisa ter no mínimo 4 letras ">
+			<f:validateLength minimum="4"/>
+			</b:inputText>
 					
 			<h:outputLabel value="Login: " rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
 			<b:inputText value="#{pessoaBean.pessoa.login}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"/>
