@@ -77,7 +77,9 @@ public class PessoaBean {
 	
 	// Método é String para permanecer na mesma tela JSF com return ""
 		public String remover() {
-			daoGeneric.removerporId(pessoa);
+		
+				daoGeneric.removerporId(pessoa);	
+				
 			// retorno que permite, permanecer na mesma tela
 			pessoa = new Pessoa();
 			// quando existem alterações no BD, invo-se o carregar a lista de pessoas
@@ -113,12 +115,7 @@ public class PessoaBean {
 	
 
 	public String logar() {
-		
-		//testar login do usuário
-		//System.out.println(pessoa.getLogin()+" - "+pessoa.getSenha());
-		
-		 
-		 
+			 
 		Pessoa pessoaUser = iDaoPessoa.consultarUsuario(pessoa.getLogin(), pessoa.getSenha());
 		
 			if (pessoaUser != null) {
@@ -128,43 +125,16 @@ public class PessoaBean {
 				externalContext.getSessionMap().put("usuarioLogado", pessoaUser);
 				
 				
-				mostrarmsg("Necessário campo do usuário");
+				mostrarmsg("Bem-Vindo");
 				
 				return "cadastro.jsf";
 			}else {
 			
 			FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage("Usuário ou senha incorreta"));
-				 
-		     
+					     
 			}
 
-		//if (pessoaUser != null) {// achou o usuário
-
-			// adicionar usuário na sessão "usuarioLogado", que está no filter de
-			// autenticação
-			// para ser recuperada e setada nas linhas abaixo
-
-			//para obter qualqur informação do ambiente de execução
-			//usa-se o objeto FacesContext
-			//FacesContext context = FacesContext.getCurrentInstance();
-			//ExternalContext externalContext = context.getExternalContext();
-			// alterado para pegar o objeto completo
-			//aqui é pego a chave e o valor
-			//externalContext.getSessionMap().put("usuarioLogado", pessoaUser);
-
-			// no momento do redirecionamento, irá consultar o filter de autenticação e é
-			// necessário ter o usuário setado,
-			// para deixar redirecionar para a página que queremos
-
-		
-			//return "primeirapagina.jsf";
-			
-			//vai cair no Fiter de Autenticação e vai recuperar o usuário caso seja válido
-			//vai deixar acessar
-		
-		//}
-
-		return "index.jsf";
+			return "index.jsf";
 	}
 	
 public boolean permiteAcesso(String acesso) {

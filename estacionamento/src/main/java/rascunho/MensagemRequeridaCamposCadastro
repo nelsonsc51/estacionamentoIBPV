@@ -1,0 +1,10 @@
+validatorMessage="placa precisa ter no mínimo 7 dígitos"
+<f:validateLength minimum="7"
+
+validatorMessage="nome precisa ter no mínimo 4 letras ">
+				<f:validateLength minimum="4"/>
+			</b:inputText>
+			
+validatorMessage="nome precisa ter no mínimo 4 letras ">
+			<f:validateLength minimum="4"/>
+			</b:inputText>			

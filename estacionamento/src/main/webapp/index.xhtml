@@ -18,36 +18,48 @@
             color: blue; /* Cor do texto */
             
         }
-        .margem-coluna {
-    	margin-left: -10%;
-		}
+        
+		body {
+            width: 100%;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 100%;
+            }
+        }
     </style>
 </h:head>
 <h:body>
 	
 	<b:messages autoUpdate="true" id="msg"/>
+	<div class="container">
+	<h:form id="formLogin" style="margin-top:10%; ">
 	
-	<h:form id="formLogin" style="margin-top:10%; margin-left:40%;">
-	
-	<h1 style="margin-left:-15%; color:red">LOGIN ESTACIONAMENTO IBPV</h1>
+	<h1 style=" color:red">LOGIN ESTACIONAMENTO IBPV</h1>
 	
 	
 	
-		<b:panelGrid columns="3">
+		<b:panelGrid columns="3" >
 		
-		<h:column styleClass="margem-coluna" >
+		<h:column  >
 			<h:outputLabel value="Login"/>
 			<b:inputText id="login" value="#{pessoaBean.pessoa.login}" required="true" requiredMessage="informe o login" autocomplete="off" /> 
 			
 		</h:column>
 		
-		<h:column styleClass="margem-coluna">
+		<h:column >
 			<h:outputLabel value="Senha"/>
 			<b:inputSecret id="senha" value="#{pessoaBean.pessoa.senha}" required="true" requiredMessage="informe a senha"/>
 			
 		</h:column>
 		<h:outputLabel/>
-		<b:commandButton value="Acessar" action="#{pessoaBean.logar}"/>
+		<b:commandButton value="Acessar" action="#{pessoaBean.logar}" style="margin-left:50%;"/>
 	</b:panelGrid>
 		
 		
@@ -55,7 +67,7 @@
 	
 		
 	</h:form>
-	
+	</div>
 	
 
 </h:body>
