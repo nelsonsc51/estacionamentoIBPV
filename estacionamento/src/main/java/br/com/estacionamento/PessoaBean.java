@@ -125,9 +125,11 @@ public class PessoaBean {
 				mostrarmsg("Necessário campo do usuário");
 				
 				return "cadastro.jsf";
-			//}else {
+			}else {
+			
+			FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage("Usuário ou senha incorreta"));
 				 
-		      //   return "index.jsf";
+		     
 			}
 
 		//if (pessoaUser != null) {// achou o usuário

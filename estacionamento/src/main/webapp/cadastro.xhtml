@@ -40,31 +40,31 @@
 		
 			</f:facet>
 			<h:outputLabel value="ID" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"  />
-			<h:inputText value="#{pessoaBean.pessoa.id}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"  readonly="true" />
+			<b:inputText value="#{pessoaBean.pessoa.id}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"  readonly="true" />
 
 
 			<h:outputLabel value="Placa do Carro:" />
-			<h:inputText value="#{pessoaBean.pessoa.placaCarro}" />
+			<b:inputText value="#{pessoaBean.pessoa.placaCarro}"  />
 			
 			<h:outputLabel value="Nome" />
-			<h:inputText value="#{pessoaBean.pessoa.nome}" />
+			<b:inputText value="#{pessoaBean.pessoa.nome}"  />
 		
 			<h:outputLabel value="SobreNome" />
-			<h:inputText value="#{pessoaBean.pessoa.sobreNome}" />
+			<b:inputText value="#{pessoaBean.pessoa.sobreNome}"  />
 					
 			<h:outputLabel value="Login: " rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
-			<h:inputText value="#{pessoaBean.pessoa.login}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"/>
+			<b:inputText value="#{pessoaBean.pessoa.login}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"/>
 			
 			<h:outputLabel value="Senha: " rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"/>
-			<h:inputSecret value="#{pessoaBean.pessoa.senha}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"/>
+			<b:inputSecret value="#{pessoaBean.pessoa.senha}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"/>
 			
 				<h:outputLabel value="Perfil: " rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
-					<h:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" >
+					<b:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" >
 						<f:selectItem itemLabel="[-Selecione-]" noSelectionOption="true"/>
 						<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador"/>
 						<f:selectItem itemValue="USUARIO" itemLabel="Usuário"/>
 						
-				</h:selectOneMenu>
+				</b:selectOneMenu>
 			<h:outputLabel />
 				
 			</h:panelGrid>
@@ -80,7 +80,7 @@
 
 
 
-		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="3"
+		<b:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="3"
 			cellpadding="4" style="margin: 0 auto;">
 			<f:facet name="header">	Lista de pessoas cadastradas</f:facet>
 			<h:column rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}">
@@ -120,7 +120,7 @@
 						<h:graphicImage value="/resources/img/excluir2.jpg"/>
 				</h:commandLink>
 			</h:column>
-		</h:dataTable>
+		</b:dataTable>
 
 
 
