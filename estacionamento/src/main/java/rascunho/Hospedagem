@@ -1,0 +1,6 @@
+<!-- projetojavawebne_projetojavawebne - nome usuário do BD -->
+senha = "Mtsa972106";/*senha da sua hospedagem*/
+user = "projetojavawebne";
+nome do banco
+projetojavawebne_estacionamento
+porta do bd da hospedagem 5432
