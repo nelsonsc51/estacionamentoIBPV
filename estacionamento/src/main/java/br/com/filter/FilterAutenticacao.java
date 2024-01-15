@@ -23,9 +23,12 @@ public class FilterAutenticacao implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		//quando clica no botão é feito uma requisiçao, com um no objeto 
 		HttpServletRequest req = (HttpServletRequest) request;
+		// e tem uma sessão que é única
 		HttpSession session = req.getSession();
-		//dentro da sessão, coloca o atributo usuarioLogado, a variável Pessoa recebe esse atributo
+		
+		//dentro da sessão, carrego o atributo do usuarioLogado, a variável Pessoa recebe esse atributo
 		Pessoa usuarioLogado = (Pessoa) session.getAttribute("usuarioLogado");
 		
 		
@@ -36,7 +39,8 @@ public class FilterAutenticacao implements Filter {
 		if(!url.equalsIgnoreCase("index.jsf") && usuarioLogado == null ){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsf");
 				dispatcher.forward(request, response);
-				return;
+				//o return é para parar a execução do Java
+				//return;
 			
 			
 		} else {

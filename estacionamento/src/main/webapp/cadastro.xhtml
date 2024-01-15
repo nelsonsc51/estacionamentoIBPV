@@ -40,7 +40,7 @@
 	
 		
 
-		<h1 style="color: red">FORMULÁRIO DO ESTACIONAMENTO IBPV</h1>
+		<h1 style="color: red">ESTACIONAMENTO IBPV</h1>
 		
 		<h:messages  infoStyle="background:orange" styleClass="mensagem"/>
 
@@ -60,7 +60,7 @@
 			<h:outputLabel value="Placa do Carro:" />
 			<b:inputText value="#{pessoaBean.pessoa.placaCarro}" 
 				validatorMessage="placa precisa ter 7 dígitos ">
-				<f:validateLength minimum="7" maximum="7"/>
+				<f:validateLength minimum="7" maximum="10"/>
 				</b:inputText>
 				
 		
@@ -99,10 +99,10 @@
 			</h:panelGrid>
 			
 			<h:panelGroup>
-				<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="/resources/img/novo.jpg" title="Novo" />
+				<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="/resources/img/novo.jpg" title="Novo"  immediate="true"/>
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/salvar.jpg" title="salvar"  />
-				<h:commandButton value="Remover" action="#{pessoaBean.remover}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Excluir" />
-				<h:commandButton value="Limpar" image="/resources/img/limpar.jpg" type="reset" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
+				<h:commandButton value="Remover" action="#{pessoaBean.remover}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Remover" immediate="true" />
+				<h:commandButton value="Limpar" image="/resources/img/limpar.jpg" type="reset" immediate="true" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
 			</h:panelGroup>
 
 		
@@ -118,7 +118,7 @@
 		
 			<h:column>
 				<f:facet name="header">Placa</f:facet>
-				<h:outputText value="#{pessoa.placaCarro}" required="true" />
+				<h:outputText value="#{pessoa.placaCarro}"  rendered="true" />
 			</h:column>
 			
 			<h:column>
@@ -133,7 +133,7 @@
 		
 			<h:column rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" >
 				<f:facet name="header">Editar</f:facet>
-				<h:commandLink >
+				<h:commandLink  title="Editar" immediate="true" >
 					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
 						value="#{pessoa}" />
 						<h:graphicImage value="/resources/img/editar2.jpg"/>
@@ -142,7 +142,7 @@
 		
 			<h:column  rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}">
 				<f:facet name="header">Excluir</f:facet>
-				<h:commandLink  action="#{pessoaBean.remover}">
+				<h:commandLink  action="#{pessoaBean.remover}" title="Excluir" immediate="true">
 					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
 						value="#{pessoa}" />
 						<h:graphicImage value="/resources/img/excluir2.jpg"/>
@@ -153,5 +153,5 @@
 
 
 	</h:form>
-	</div>
+</div>	
 </h:body> </html>

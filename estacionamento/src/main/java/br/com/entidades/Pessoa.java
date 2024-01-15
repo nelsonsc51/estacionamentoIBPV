@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Pessoa implements Serializable {
@@ -18,6 +21,7 @@ public class Pessoa implements Serializable {
 	private Long id;
 	
 	private String nome;
+	
 	
 	private String sobreNome;
 	
