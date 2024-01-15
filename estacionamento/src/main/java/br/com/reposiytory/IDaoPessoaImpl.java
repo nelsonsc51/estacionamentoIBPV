@@ -19,12 +19,12 @@ public class IDaoPessoaImpl implements IDAOPessoa {
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		
-		try {
+		 try {
 		//.getSingleResult(); - só pode ser retornado um resultado, somente um usuário único
 		pessoa = (Pessoa) entityManager
 				.createQuery("select p from Pessoa p where p.login = '" + login + "' and p.senha = '" + senha + "'")
 				.getSingleResult();
-		}catch (javax.persistence.NoResultException e) { // se não encontrar o usuário
+		 }catch (javax.persistence.NoResultException e) { // tratamento se não encontrar o usuário e senha
 		}
 		entityTransaction.commit();
 		entityManager.close();

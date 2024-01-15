@@ -37,7 +37,7 @@
 </h:head>
 <h:body>
 	
-	<b:messages autoUpdate="true" id="msg"/>
+	<b:messages  autoUpdate="true" id="msg"/>
 	<div class="container">
 	<h:form id="formLogin" style="margin-top:10%; ">
 	
@@ -49,13 +49,13 @@
 		
 		<h:column  >
 			<h:outputLabel value="Login"/>
-			<b:inputText id="login" value="#{pessoaBean.pessoa.login}" required="true" requiredMessage="informe o login" autocomplete="off" /> 
+			<b:inputText id="login" value="#{pessoaBean.pessoa.login}" required="true"  requiredMessage="informe o login" autocomplete="off" /> 
 			
 		</h:column>
 		
 		<h:column >
 			<h:outputLabel value="Senha"/>
-			<b:inputSecret id="senha" value="#{pessoaBean.pessoa.senha}" required="true" requiredMessage="informe a senha"/>
+			<b:inputSecret id="senha" value="#{pessoaBean.pessoa.senha}" required="true"  requiredMessage="informe a senha"/>
 			
 		</h:column>
 		<h:outputLabel/>

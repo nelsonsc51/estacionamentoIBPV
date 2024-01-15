@@ -128,9 +128,10 @@ public class PessoaBean {
 				mostrarmsg("Bem-Vindo");
 				
 				return "cadastro.jsf";
+				//caso o usuário seja nulo
 			}else {
-			
-			FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage("Usuário ou senha incorreta"));
+			//adiciona a linha abaixo com essa mensagem
+			 FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage("Usuário ou senha incorreta"));
 					     
 			}
 
