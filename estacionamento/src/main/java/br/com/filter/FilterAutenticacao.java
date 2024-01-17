@@ -40,7 +40,7 @@ public class FilterAutenticacao implements Filter {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsf");
 				dispatcher.forward(request, response);
 				//o return é para parar a execução do Java
-				//return;
+				return;
 			
 			
 		} else {
