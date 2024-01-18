@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import br.com.entidades.Pessoa;
 import br.com.jpautil.JPAUtil;
 
 //<E> - que vai receber qualquer classe

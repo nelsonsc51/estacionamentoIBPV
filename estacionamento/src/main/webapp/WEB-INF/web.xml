@@ -18,5 +18,11 @@
 	    <param-name>BootsFaces_USETHEME</param-name>
 	    <param-value>default</param-value>
 	</context-param>
+	
+	<error-page>
+    <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+    <location>/index.xhtml</location>
+</error-page>
+	
   
 </web-app>

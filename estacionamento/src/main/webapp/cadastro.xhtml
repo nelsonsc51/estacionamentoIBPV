@@ -133,7 +133,7 @@
 		
 			<h:column rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" >
 				<f:facet name="header">Editar</f:facet>
-				<h:commandLink  title="Editar" immediate="true" >
+				<h:commandLink immediate="true" title="Editar"  >
 					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
 						value="#{pessoa}" />
 						<h:graphicImage value="/resources/img/editar2.jpg"/>
