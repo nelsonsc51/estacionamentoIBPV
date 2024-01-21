@@ -21,7 +21,7 @@
 	
 	<error-page>
     <exception-type>javax.faces.application.ViewExpiredException</exception-type>
-    <location>/sessaoExpirada.xhtml</location>
+    <location>/index.xhtml</location>
 </error-page>
 	
   
