@@ -104,10 +104,10 @@
 				<h:commandButton value="Remover" action="#{pessoaBean.remover}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Remover" immediate="true" />
 				<h:commandButton value="Limpar" image="/resources/img/limpar.jpg" action="#{pessoaBean.limpar}" immediate="true" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
 			</h:panelGroup>
-
 		
+		</h:form>
 
-
+		<h:form>
 
 		<b:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="3"
 			cellpadding="4" style="margin: 0 auto;">
@@ -150,8 +150,8 @@
 			</h:column>
 		</b:dataTable>
 
-
-
 	</h:form>
+
+	
 </div>	
 </h:body> </html>
