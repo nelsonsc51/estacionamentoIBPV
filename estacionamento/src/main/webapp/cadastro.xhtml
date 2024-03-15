@@ -103,7 +103,9 @@
 					<f:ajax execute="botaNovo" render="@form"/>
 				</h:commandButton>
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/salvar.jpg" title="salvar"  />
-				<h:commandButton value="Remover" action="#{pessoaBean.remover}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Remover" immediate="true" />
+				<h:commandButton value="Remover" id="botaoRemover" action="#{pessoaBean.remover}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Remover" immediate="true" >
+					<f:ajax execute="botaoRemover" render="@form"/>
+				</h:commandButton>
 				<h:commandButton value="Limpar" id="botaLimpar" image="/resources/img/limpar.jpg" action="#{pessoaBean.limpar}" immediate="true" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" >
 					<f:ajax execute="botaLimpar" render="@form"/>
 				</h:commandButton>
