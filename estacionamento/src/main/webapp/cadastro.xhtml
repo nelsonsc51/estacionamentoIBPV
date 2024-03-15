@@ -36,7 +36,7 @@
 	
 	<ui:include src="/menu.xhtml"/>
 	<div class="container">
-	<h:form id="formPessao" style="text-align: center;" >
+	<h:form id="formPessoa" style="text-align: center;" >
 	
 		
 
@@ -99,15 +99,19 @@
 			</h:panelGrid>
 			
 			<h:panelGroup>
-				<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="/resources/img/novo.jpg" title="Novo"  immediate="true"/>
+				<h:commandButton value="Novo" id="botaNovo" action="#{pessoaBean.novo}" image="/resources/img/novo.jpg" title="Novo"  immediate="true">
+					<f:ajax execute="botaNovo" render="@form"/>
+				</h:commandButton>
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/salvar.jpg" title="salvar"  />
 				<h:commandButton value="Remover" action="#{pessoaBean.remover}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Remover" immediate="true" />
-				<h:commandButton value="Limpar" image="/resources/img/limpar.jpg" action="#{pessoaBean.limpar}" immediate="true" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
+				<h:commandButton value="Limpar" id="botaLimpar" image="/resources/img/limpar.jpg" action="#{pessoaBean.limpar}" immediate="true" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" >
+					<f:ajax execute="botaLimpar" render="@form"/>
+				</h:commandButton>
 			</h:panelGroup>
 		
 		</h:form>
 
-		<h:form>
+		<h:form id="formTable">
 
 		<b:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="3"
 			cellpadding="4" style="margin: 0 auto;">
