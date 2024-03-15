@@ -102,7 +102,7 @@
 				<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="/resources/img/novo.jpg" title="Novo"  immediate="true"/>
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/salvar.jpg" title="salvar"  />
 				<h:commandButton value="Remover" action="#{pessoaBean.remover}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Remover" immediate="true" />
-				<h:commandButton value="Limpar" image="/resources/img/limpar.jpg" action="#{pessoaBean.novo}" immediate="true" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
+				<h:commandButton value="Limpar" image="/resources/img/limpar.jpg" action="#{pessoaBean.limpar}" immediate="true" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" />
 			</h:panelGroup>
 
 		

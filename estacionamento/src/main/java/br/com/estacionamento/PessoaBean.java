@@ -75,6 +75,12 @@ public class PessoaBean {
 		return "";
 	}
 	
+	public String limpar() {
+		pessoa = new Pessoa();
+		// retorno que permite, permanecer na mesma tela
+		return "";
+	}
+	
 	// Método é String para permanecer na mesma tela JSF com return ""
 		public String remover() {
 		
