@@ -40,7 +40,7 @@
 	
 		
 
-		<h1 style="color: red">ESTACIONAMENTO IBPV</h1>
+		<h1 style="color: red">ORDEM DE SEGURANÇA</h1>
 		
 		<h:messages  infoStyle="background:orange" styleClass="mensagem"/>
 
@@ -57,7 +57,7 @@
 			<b:inputText value="#{pessoaBean.pessoa.id}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}"  readonly="true" />
 
 
-			<h:outputLabel value="Placa do Carro:" />
+			<h:outputLabel value=" Id de Ordem" />
 			<b:inputText value="#{pessoaBean.pessoa.placaCarro}" 
 				validatorMessage="placa precisa ter 7 dígitos ">
 				<f:validateLength minimum="7" maximum="10"/>
@@ -73,7 +73,7 @@
 			</b:inputText>
 				
 		
-			<h:outputLabel value="SobreNome" />
+			<h:outputLabel value="Complemento" />
 			<b:inputText value="#{pessoaBean.pessoa.sobreNome}"
 				  
 				validatorMessage="sobreNome precisa ter no mínimo 4 letras "> 
@@ -123,7 +123,7 @@
 			</h:column>
 		
 			<h:column >
-				<f:facet name="header">Placa</f:facet>
+				<f:facet name="header">Id de Ordem</f:facet>
 				<h:outputText value="#{pessoa.placaCarro}"  rendered="true" />
 			</h:column>
 			
@@ -133,7 +133,7 @@
 			</h:column>
 			
 			<h:column>
-				<f:facet name="header">SobreNome</f:facet>
+				<f:facet name="header">Complemento</f:facet>
 				<h:outputText value="#{pessoa.sobreNome}" />
 			</h:column>
 		
