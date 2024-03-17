@@ -5,6 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:b="http://bootsfaces.net/ui"
 	 xmlns:ui="http://java.sun.com/jsf/facelets"
+	 xmlns:p="http://primefaces.org/ui"
 	>
 	 <h:head>
 	<title>EstacionamentoIBPV</title>
@@ -31,16 +32,20 @@
             }
         }
     </style>
+    
+    <script type="text/javascript" src="#{request.contextPath}/resources/js/confirmador.js"></script>
 </h:head> 
 <h:body>
 	
 	<ui:include src="/menu.xhtml"/>
 	<div class="container">
+	
 	<h:form id="formPessoa" style="text-align: center;" >
 	
 		
 
 		<h1 style="color: red">ORDEM DE SEGURANÇA</h1>
+		
 		
 		<h:messages  infoStyle="background:orange" styleClass="mensagem"/>
 
@@ -59,7 +64,7 @@
 
 			<h:outputLabel value=" Id de Ordem" />
 			<b:inputText value="#{pessoaBean.pessoa.placaCarro}" 
-				validatorMessage="placa precisa ter 7 dígitos ">
+				validatorMessage="Id da ordem precisa ter 7 dígitos ">
 				<f:validateLength minimum="7" maximum="10"/>
 				</b:inputText>
 				
@@ -76,7 +81,7 @@
 			<h:outputLabel value="Complemento" />
 			<b:inputText value="#{pessoaBean.pessoa.sobreNome}"
 				  
-				validatorMessage="sobreNome precisa ter no mínimo 4 letras "> 
+				validatorMessage="Complemento precisa ter no mínimo 4 letras "> 
 				<f:validateLength minimum="4"/>	
 			</b:inputText>
 				
@@ -103,9 +108,12 @@
 					<f:ajax execute="botaNovo" render="@form"/>
 				</h:commandButton>
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/salvar.jpg" title="salvar"  />
-				<h:commandButton value="Remover" id="botaoRemover" action="#{pessoaBean.remover}" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Remover" immediate="true" >
-					<f:ajax execute="botaoRemover" render="@form"/>
+				<h:commandButton value="Remover" id="botaoRemover" action="#{pessoaBean.remover}" onclick="if(!confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESTE REGISTRO?')) return false;" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Remover" immediate="true"   >
+					<f:ajax execute="botaoRemover" render="@form">
+					</f:ajax>
+					
 				</h:commandButton>
+				
 				<h:commandButton value="Limpar" id="botaLimpar" image="/resources/img/limpar.jpg" action="#{pessoaBean.limpar}" immediate="true" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" >
 					<f:ajax execute="botaLimpar" render="@form"/>
 				</h:commandButton>
@@ -148,10 +156,11 @@
 		
 			<h:column  rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}">
 				<f:facet name="header">Excluir</f:facet>
-				<h:commandLink  action="#{pessoaBean.remover}" title="Excluir" immediate="true">
+				<h:commandLink   action="#{pessoaBean.remover}" onclick="if(!confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESTE REGISTRO?')) return false;" title="Excluir" immediate="true">
 					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
 						value="#{pessoa}" />
 						<h:graphicImage value="/resources/img/excluir2.jpg"/>
+						
 				</h:commandLink>
 			</h:column>
 		</b:dataTable>
@@ -160,4 +169,6 @@
 
 	
 </div>	
-</h:body> </html>
+	
+</h:body>
+ </html>

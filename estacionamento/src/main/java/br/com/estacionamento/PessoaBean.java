@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.swing.JOptionPane;
 
 import br.com.dao.DaoGeneric;
 import br.com.entidades.Pessoa;
@@ -61,6 +62,8 @@ public class PessoaBean {
 		context.addMessage(null, message);
 			
 		}
+	
+	
 
 	@PostConstruct
 	private void carregarPessoas() {
@@ -83,7 +86,8 @@ public class PessoaBean {
 	
 	// Método é String para permanecer na mesma tela JSF com return ""
 		public String remover() {
-		
+			
+				
 				daoGeneric.removerporId(pessoa);	
 				
 			// retorno que permite, permanecer na mesma tela
@@ -94,6 +98,7 @@ public class PessoaBean {
 			mostrarmsg("REMOVIDO COM SUCESSO");
 			return "";
 		}
+		
 
 	public Pessoa getPessoa() {
 		return pessoa;
