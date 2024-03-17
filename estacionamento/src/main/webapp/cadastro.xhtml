@@ -108,7 +108,7 @@
 					<f:ajax execute="botaNovo" render="@form"/>
 				</h:commandButton>
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/salvar.jpg" title="salvar"  />
-				<h:commandButton value="Remover" id="botaoRemover" action="#{pessoaBean.remover}" onclick="if(!confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESTE REGISTRO?')) return false;" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Remover" immediate="true"   >
+				<h:commandButton value="Remover" id="botaoRemover" action="#{pessoaBean.remover}"  onclick="if(!confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESTE REGISTRO?')) return false;" rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}" image="/resources/img/delete.jpg"  title="Remover" immediate="true"   >
 					<f:ajax execute="botaoRemover" render="@form">
 					</f:ajax>
 					
@@ -156,7 +156,7 @@
 		
 			<h:column  rendered="#{pessoaBean.permiteAcesso('ADMINISTRADOR')}">
 				<f:facet name="header">Excluir</f:facet>
-				<h:commandLink   action="#{pessoaBean.remover}" onclick="if(!confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESTE REGISTRO?')) return false;" title="Excluir" immediate="true">
+				<h:commandLink   action="#{pessoaBean.remover}"  onclick="if(!confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESTE REGISTRO?')) return false;" title="Excluir" immediate="true">
 					<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
 						value="#{pessoa}" />
 						<h:graphicImage value="/resources/img/excluir2.jpg"/>
