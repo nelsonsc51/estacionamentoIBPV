@@ -9,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.swing.JOptionPane;
 
 import br.com.dao.DaoGeneric;
 import br.com.entidades.Pessoa;
@@ -30,8 +29,9 @@ public class PessoaBean {
 	
 	// agora salva e retorna a entidade na tela JSF
 		public String salvar() {
-			
-			
+						
+			Pessoa pessoaUser = iDaoPessoa.consultarUsuario(pessoa.getLogin(), pessoa.getSenha());
+			//Pessoa pessoaPlaca = iDaoPessoa.consultaPlaca(pessoa.getPlacaCarro());
 			
 			if(pessoa.getPlacaCarro().isEmpty()) {
 				mostrarmsg("Por Favor digitar a placa do carro");
@@ -39,7 +39,12 @@ public class PessoaBean {
 				mostrarmsg("Por Favor digitar o nome");
 			} else if(pessoa.getSobreNome().isEmpty()) {
 				mostrarmsg("Por Favor digitar o sobreNome");
-			} else {
+			//} else if(pessoaUser != null) {
+				//mostrarmsg("Este login já existe");
+			//} else if(pessoaPlaca != null) {
+			//	mostrarmsg("Esta placa já existe");
+			}
+			else {
 				// atribui-se a pessoa, a entidade que o JPA irá retornar
 				pessoa = daoGeneric.merge(pessoa);
 				// quando existem alterações no BD, involve-se o carregar a lista de pessoas

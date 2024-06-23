@@ -4,3 +4,11 @@ user = "projetojavawebne";
 nome do banco
 projetojavawebne_estacionamento
 porta do bd da hospedagem 5432
+
+
+<!-- nelso3978 - nome usuário do BD -->
+senha = "Mtsa972106";/*senha da sua hospedagem*/
+user = "nelso3978";
+nome do banco
+nelso3978_estacionamento
+porta do bd da hospedagem 5432
